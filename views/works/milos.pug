@@ -1,0 +1,11 @@
+h1 Thăm ngàn
+
+a(href='/todos/create') Create
+
+form(action="/todos/search", method="GET")
+  input(type="text", name='q', value=question)
+  button Search
+  
+ul
+  each work in works
+    li= work.name
