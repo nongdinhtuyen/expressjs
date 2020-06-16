@@ -1,27 +1,28 @@
 // server.js
 // where your node app starts
-
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 const port = 3000;
-var bodyParser = require('body-parser')
+
+
+db.defaults({ works: [] }).write();
+
 app.set("views", "./views");
 app.set("view engine", "pug");
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
 app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
 app.use(bodyParser.json())
 
-var works = [
-  {id :1, name:'Đi học'},
-  {id :2, name:'Đi chợ'},
-  {id :3, name:'Nấu cơm'},
-  {id :4, name:'Thăm ngàn'}
-]
+
+
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -29,14 +30,14 @@ app.get("/", (req, res) => {
 
 app.get("/todos", (req, res) => {
   res.render("works/milos", {
-    works: works
+    works: db.get('works').value()
   });
 });
 
 app.get("/todos/search", (req, res) => {
   var q = req.query.q;
   var question;
-  var search = works.filter(work =>{
+  var search = db.get('works').value().filter(work =>{
     return work.name.toLowerCase().indexOf(q.toLowerCase()) !==-1;
   });
   res.render('works/milos', {
@@ -50,8 +51,10 @@ app.get("/todos/create", (req, res) => {
 });
 
 app.post("/todos/create", (req, res) => {
-  works.push(req.body);
-  res.redirect('/todos')
+  console.log('123')
+  db.get("works").push(req.body).write();
+  console.log('456')
+  res.redirect("/todos")
 });
 
 // listen for requests :)
