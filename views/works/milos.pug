@@ -7,5 +7,5 @@ form(action="/todos/search", method="GET")
   button Search
   
 ul
-  each work in works
-    li= work.name
+  each work, index in works
+    li= (index+1) +' : ' +work.name

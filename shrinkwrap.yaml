@@ -1,5 +1,7 @@
 dependencies:
+  body-parser: 1.19.0
   express: 4.17.1
+  lowdb: 1.0.0
   pug: 3.0.0
 packages:
   /@babel/helper-validator-identifier/7.10.1:
@@ -220,6 +222,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+  /graceful-fs/4.2.4:
+    dev: false
+    resolution:
+      integrity: sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
   /has-symbols/1.0.1:
     dev: false
     engines:
@@ -306,6 +312,18 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  /lowdb/1.0.0:
+    dependencies:
+      graceful-fs: 4.2.4
+      is-promise: 2.2.2
+      lodash: 4.17.15
+      pify: 3.0.0
+      steno: 0.4.4
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-2+x8esE/Wb9SQ1F9IHaYWfsC9FIecLOPrK4g17FGEayjUWH172H6nwicRovGvSE2CPZouc2MCIqCI7h9d+GftQ==
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -385,6 +403,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
+  /pify/3.0.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
   /promise/7.3.1:
     dependencies:
       asap: 2.0.6
@@ -569,6 +593,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+  /steno/0.4.4:
+    dependencies:
+      graceful-fs: 4.2.4
+    dev: false
+    resolution:
+      integrity: sha1-BxEFvfwobmYVwEA8J+nXtdy4Vcs=
   /to-fast-properties/2.0.0:
     dev: false
     engines:
@@ -633,5 +663,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  body-parser: ^1.19.0
   express: ^4.17.1
+  lowdb: ^1.0.0
   pug: ^3.0.0
