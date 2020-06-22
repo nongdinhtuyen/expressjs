@@ -10,6 +10,9 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 const port = 3000;
+const chalk = require('chalk');
+ 
+
 
 
 db.defaults({ works: [] }).write();
@@ -53,7 +56,7 @@ app.get("/todos/create", (req, res) => {
 app.post("/todos/create", (req, res) => {
   console.log('123')
   db.get("works").push(req.body).write();
-  console.log('456')
+  console.log(chalk.red('Hello world!'));
   res.redirect("/todos")
 });
 
