@@ -1,0 +1,7 @@
+h1 Delete
+p
+  span= works.name
+  
+  form(action="/todos/" + works.id + "/delete", method="post")
+    input(type="submit" value="delete")
+  

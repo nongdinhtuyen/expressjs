@@ -52,23 +52,38 @@ app.get("/todos/create", (req, res) => {
   res.render('works/create');
 });
 
-
-
 app.post("/todos/create", (req, res) => {
   req.body.id = shortid.generate()
-  console.log()
   db.get("works").push(req.body).write();
-  res.redirect("/todos")
+  res.redirect("/todos");
 });
 
 app.get("/todos/:id", (req, res) => {
   var id = req.params.id;
   var work = db.get('works').find({ id: id }).value();
-  console.log(work)
-  res.render("works/view" , {
+  res.render("works/view" ,  {
     works: work
   });
+  console.log(db.get('works').value())
 });
+
+app.get("/todos/:id/delete", (req, res) =>{
+  var id = req.params.id;
+  var work = db.get('works').find({ id: id }).value();
+  res.render('works/delete', {
+    works: work
+  })
+  console.log(db.get('works').find({ id: req.params.id }).value())
+})
+
+app.post("/todos/:id/delete", (req, res) => {
+  var id = req.params.id;
+  console.log(id)
+  var work = db.get('works').find({ id: id }).value();
+  db.get('works').remove({id: id}).write();
+  res.redirect("/todos");
+  console.log(db.get('works').value())
+})
 
 // listen for requests :)
 app.listen(port, () => {

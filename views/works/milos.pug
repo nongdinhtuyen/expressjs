@@ -10,5 +10,7 @@ ul
   each work in works
     li
       span= work.name
-      span &nbsp;
-      a(href='/todos/' + work.id) View
+      span &nbsp
+      a(href='/todos/'+work.id) View
+      span &nbsp
+      a(href='/todos/'+work.id+'/delete') Delete
