@@ -8,4 +8,7 @@ form(action="/todos/search", method="GET")
   
 ul
   each work in works
-    li= work.name
+    li
+      span= work.name
+      span &nbsp;
+      a(href='/todos/' + work.id) View

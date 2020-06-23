@@ -10,8 +10,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 const port = 3000;
-const chalk = require('chalk');
- 
+const shortid = require('shortid')
 
 
 
@@ -53,11 +52,22 @@ app.get("/todos/create", (req, res) => {
   res.render('works/create');
 });
 
+
+
 app.post("/todos/create", (req, res) => {
-  console.log('123')
+  req.body.id = shortid.generate()
+  console.log()
   db.get("works").push(req.body).write();
-  console.log(chalk.red('Hello world!'));
   res.redirect("/todos")
+});
+
+app.get("/todos/:id", (req, res) => {
+  var id = req.params.id;
+  var work = db.get('works').find({ id: id }).value();
+  console.log(work)
+  res.render("works/view" , {
+    works: work
+  });
 });
 
 // listen for requests :)
