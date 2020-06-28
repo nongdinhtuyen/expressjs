@@ -1,0 +1,11 @@
+h1 Update user
+p
+  p
+    b Name &nbsp
+    span=user.name
+    
+  form(action='/index/users/'+user.name+'/update', method='post')
+    label name
+    input(type="text" name='name')
+    br
+    button Update

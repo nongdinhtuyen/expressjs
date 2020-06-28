@@ -1,0 +1,25 @@
+h1 List
+
+a(href="/index/users") User
+br
+a(href="/index/transactions") Transactions
+br
+a(href="/index/books/create") Create
+
+form(action='/index/books/search' method='get')
+  input(type="text", name='q', value=question)
+  button Search
+
+ul
+  each book in books
+    li
+      span= book.title 
+      span &nbsp
+      a(href='/index/books/'+book.title) View 
+      span &nbsp
+      a(href='/index/books/'+book.title+'/update') Update
+      span &nbsp
+      a(href='/index/books/'+book.id+'/delete') Delete
+  
+
+    

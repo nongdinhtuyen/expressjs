@@ -1,0 +1,17 @@
+h1 Update title
+p
+  p
+    b Title &nbsp
+    span=books.title
+    br
+    b Description &nbsp
+    span=books.description
+    
+  form(action='/index/books/'+books.title+'/update', method='post')
+    label title
+    input(type="text" name='title')
+    br
+    label description
+    input(type="text" name='description')
+    br
+    button Update

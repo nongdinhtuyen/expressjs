@@ -1,0 +1,22 @@
+h1 Transactions
+
+a(href='/index/books') Books
+br
+a(href='/index/users') Users
+br
+a(href='/index/transactions/create') Create
+
+ul
+  each transaction in transactions
+    li
+      b User
+      span= transaction.UserId
+      span &nbsp 
+      b Book
+      span= transaction.BookId
+      span &nbsp 
+      a(href='/index/transactions/'+transaction.id+'/delete') Delete
+      
+      
+      
+
